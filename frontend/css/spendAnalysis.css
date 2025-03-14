@@ -1,0 +1,102 @@
+body {
+    background-color: #0f172a;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+/* Spend Analysis Specific Styles */
+.dashboard-content {
+    margin-left: 350px;
+    padding: 30px;
+    color: white;
+}
+  
+.filter-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+  
+.card-filter, .month-filter {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #0364ff;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+}
+  
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+  
+.chart-card {
+    background: rgba(31, 5, 71, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    height: 400px; /* Fixed height to prevent vibration on full screen */
+}
+  
+.chart-card canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+  
+.chart-card h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #007bff;
+}
+  
+.transaction-history {
+    background: rgba(25, 6, 49, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+}
+  
+.transaction-table {
+    max-height: 400px;
+    overflow-y: auto;
+}
+  
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+  
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+}
+  
+th {
+    background: #0f172a;
+    color: white;
+}
+  
+tr:hover {
+    background: #ffffff0d;
+}
+
+/* New styles for select options to ensure they are visible */
+.card-filter option,
+.month-filter option {
+    color: white;
+    background-color: #1E1E1E; /* Dark background for contrast */
+}
+.row-expense {
+    color: #dc3545; /* red text for negative amounts */
+  }
+  
+  .row-income {
+    color: #28a745; /* green text for positive amounts */
+  }
+  

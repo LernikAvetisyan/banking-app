@@ -1,0 +1,193 @@
+/* Remove default browser margin/padding so the background covers the top */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 309px;
+  height: 100vh;
+  background: #1e293b;
+  color: white;
+  padding: 25px;
+  position: fixed;
+  left: 0px;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 4px 0 10px rgba(35, 11, 124, 0.2);
+}
+
+.sidebar-footer {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* Example styling for the logout button */
+#logoutBtn {
+  width: 80%;
+  margin: 10px 0; 
+  padding: 10px;
+  background: #001529;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#logoutBtn:hover {
+  background: #0f172a;
+}
+.logout-button {
+  display: inline-block;
+  width: 80%;
+  padding: 10px;
+  background: #001529;
+  color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #000b17;
+}
+
+/* Main content */
+.dashboard-content {
+  margin-left: 350px;
+  padding: 30px;
+  color: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #001529 0%, #000b17 100%);
+}
+
+/* If you see a duplicate .dashboard-content, keep just one version if they’re identical */
+.dashboard-content {
+  margin-left: 350px;
+  padding: 30px;
+  color: white;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #001529 0%, #000b17 100%);
+}
+
+.dashboard-overall {
+  display: flex;
+  align-items: center; 
+  gap: 10px; /* space between the label and the number */
+}
+
+.sidebar .dashboard-title {
+  margin: 0 0 20px;
+  color: #4f5ccf;
+  font-size: 1.5rem;
+  text-align: center; /* center horizontally */
+}
+
+.search-section {
+  margin-bottom: 25px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 16px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+  background: rgba(0, 123, 255, 0.2);
+  color: #007bff;
+  font-weight: 600;
+}
+
+tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin: 25px 0;
+}
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #007bff;
+  margin: 10px 0;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+/* -------------------------------
+   WALLET-CARD STYLES (from wallet.css)
+   for the "Selected Card" design
+--------------------------------- */
+.wallet-card {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  color: #000;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  position: relative;
+  margin-top: 20px; /* optional spacing from content above */
+}
+
+.wallet-card h3 {
+  margin-top: 0;
+}
+
+.wallet-card p {
+  margin: 5px 0;
+}
+
+/* Hide the selected card by default (if you want to unhide via JS) */
+#selectedCard {
+  display: none;
+}
