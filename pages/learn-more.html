@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Banking Account</title>
+        <link rel="stylesheet" href="../css/learn-more.css">
+        <script defer src="../js/login.js"></script> <!-- ✅ Ensure JS is loaded properly -->
+    </head>    
+<body>
+
+    <header class="navbar">
+        <div class="logo">Banking Account</div>
+        <div class="nav-buttons">
+            <a href="../index.html" class="btn login-btn">Log In</a>
+            <a href="../pages/signup.html" class="btn client-btn">Become a Client</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="text-container">
+            <span class="special-offer">Special Offer</span>
+            <h1>Move your pay and you could earn <span class="highlight">$250</span></h1>
+            <p>Open a no monthly fee Account and move your pay.</p>
+            <a href="../pages/signup.html" class="btn client-btn">Become a Client</a>
+        </div>
+    </section>
+
+    <script>
+        function clearLoginSession() {
+            sessionStorage.removeItem("loggedIn"); // ✅ Clears login session when clicking "Log In" from Learn More page
+        }
+    </script>
+
+</body>
+</html>
