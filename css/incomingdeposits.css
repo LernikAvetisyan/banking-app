@@ -1,0 +1,111 @@
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.incoming-deposits-container {
+  margin-left: 350px;  /* Adjust to match your sidebar width */
+  padding: 2rem;
+  max-width: 1400px;
+  box-sizing: border-box;
+  background-color: #1e293b;
+  border-radius: 8px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.incoming-deposits-container h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.instruction {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0f172a;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+thead th {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #334155;
+  text-align: center;
+}
+
+.card-select, .deposit-btn {
+  padding: 5px;
+  border-radius: 4px;
+  border: none;
+}
+
+.card-select {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.deposit-btn {
+  background-color: #3b82f6;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.deposit-btn:hover {
+  background-color: #6366f1;
+}
+
+/* Notification styling */
+.notification {
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #3b82f6;
+}
+
+/* Incoming Transaction History styles */
+.incoming-history-container {
+  margin-top: 2rem;
+}
+
+.incoming-history-container h2 {
+  margin-bottom: 10px;
+}
+
+#incomingHistoryTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0f172a;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+#incomingHistoryTable thead th {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+#incomingHistoryTable th, #incomingHistoryTable td {
+  padding: 10px;
+  border: 1px solid #334155;
+  text-align: center;
+}
