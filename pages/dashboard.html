@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <!-- Make sure you have your existing dashboard.css linked here -->
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-content">
+    <!-- Header Section with Overall Balance -->
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">Dashboard Overview</h1>
+      <div class="dashboard-overall">
+        <div class="overall-label">Total Balance</div>
+        <div id="overall-balance" class="overall-value">$0</div>
+      </div>
+    </div>
+
+    <!-- Stats Grid (Total Income, Total Expenses, Active Wallets) -->
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-label">Total Income</div>
+        <div class="stat-value" id="total-income">$0</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Total Expenses</div>
+        <div class="stat-value" id="total-expenses">$0</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-label">Active Wallets</div>
+        <div class="stat-value" id="total-wallets">0</div>
+      </div>
+    </div>
+
+    <!-- Main Dashboard Cards -->
+    <div id="dashboard-cards" class="card-list">
+      <!-- 1) Spending Breakdown (top-left) -->
+      <div class="card" id="spending-breakdown-card">
+        <h3>Spending Breakdown</h3>
+        <div class="dashboard-chart">
+          <canvas id="miniPieChart"></canvas>
+        </div>
+      </div>
+    
+      <!-- 2) Spending Trend (top-right) -->
+      <div class="card" id="spending-trend-card">
+        <h3>Spending Trend</h3>
+        <div class="dashboard-chart">
+          <canvas id="miniLineChart"></canvas>
+        </div>
+      </div>
+    
+      <!-- 3) Recent Activity (bottom row spanning both columns) -->
+     <div class="card" id="recent-activity-card">
+      <h3>Recent Activity</h3>
+       <ul class="activity-list" id="recent-activity">
+          <li>No recent transactions.</li>
+       </ul>
+      </div>
+   </div>
+  </div>
+</body>
+</html>
