@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Banking App</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to Your Account</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <!-- NEW: Dropdown to select login type -->
+      <div class="form-group">
+        <label for="loginRole">Login as:</label>
+        <select id="loginRole" name="loginRole">
+          <option value="user">User</option>
+          <option value="employee">Employee</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-login">Login</button>
+    </form>
+    <p class="signup-link">Don't have an account? <a href="signup.html">Sign up here</a></p>
+    <!-- Error message container -->
+    <div id="loginError" style="color: red; font-size: 14px;"></div>
+  </div>
+  <script src="../js/login.js"></script>
+</body>
+</html>
