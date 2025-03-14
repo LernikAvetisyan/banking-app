@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Withdrawal</title>
+  <link rel="stylesheet" href="css/withdrawal.css" />
+  <script defer src="js/withdrawal.js"></script>
+</head>
+<body>
+  <div class="withdrawal-content">
+    <h1>Withdrawal</h1>
+
+    <!-- 1️⃣ Selection Screen -->
+    <div id="withdrawal-selection">
+      <h2>Select how you would like to proceed with your transaction</h2>
+      <div class="withdrawal-options">
+        <div class="withdrawal-card" id="bankUsersOption">
+          <i class="fas fa-users"></i>
+          <h3>Bank Users</h3>
+          <p>Withdraw from a bank user</p>
+        </div>
+        <div class="withdrawal-card" id="outOfBankUsersOption">
+          <i class="fas fa-credit-card"></i>
+          <h3>Out of Bank Users</h3>
+          <p>Withdraw from an external card</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2️⃣ Bank Users Withdrawal Form (Hidden by Default) -->
+    <div id="bankUsersForm" class="hidden">
+      <!-- Back Button & Heading -->
+      <button class="back-btn" id="backFromBankUsers">Back</button>
+      <h2>Withdrawal from Bank User</h2>
+      <!-- Narrower bank-users-box container -->
+      <div class="bank-users-box">
+        <form id="bankUserWithdrawalForm">
+          <label>User ID:</label>
+          <input type="text" id="bankUserId" required />
+          <small id="bankUserIdError" class="error"></small>
+
+          <label>Withdrawal Amount:</label>
+          <input type="text" id="bankUserWithdrawalAmount" required />
+          <small id="bankUserWithdrawalAmountError" class="error"></small>
+
+          <button type="submit">Withdraw</button>
+        </form>
+        <small id="bankUserWithdrawalSuccess" class="success"></small>
+      </div>
+    </div>
+
+    <!-- 3️⃣ Out of Bank Users Withdrawal Form (Hidden by Default) -->
+    <div id="outOfBankUsersForm" class="hidden">
+      <!-- Back Button & Heading -->
+      <button class="back-btn" id="backFromOutOfBankUsers">Back</button>
+      <h2>Withdrawal from External Card</h2>
+
+      <!-- Wallet Cards (Top) -->
+      <div id="withdrawal-wallet-list" class="wallet-list"></div>
+
+      <!-- "Choose a card..." and the dropdown (outside the background box) -->
+      <div class="choose-card-text">
+        <p>Choose a card from which you want to withdraw:</p>
+        <select id="withdrawalCardSelect"></select>
+      </div>
+
+      <!-- Hidden box that appears when a valid card is selected -->
+      <div id="withdrawalBox" class="out-of-bank-box hidden">
+        <!-- Selected card details -->
+        <div id="selected-card" class="selected-card"></div>
+
+        <!-- Withdrawal form -->
+        <form id="withdrawalForm">
+          <label>Source Cardholder Name:</label>
+          <input type="text" id="sourceCardholder" required />
+          <small id="sourceCardholderError" class="error"></small>
+
+          <label>Source Card Number:</label>
+          <input type="text" id="sourceCardNumber" maxlength="19" required />
+          <small id="sourceCardNumberError" class="error"></small>
+
+          <label>Expiration Date (MM/YY):</label>
+          <div class="expiration-date">
+            <input type="text" id="sourceExpMonth" placeholder="MM" maxlength="2" required />
+            <small id="sourceExpMonthError" class="error"></small>
+            <input type="text" id="sourceExpYear" placeholder="YY" maxlength="2" required />
+            <small id="sourceExpYearError" class="error"></small>
+          </div>
+
+          <label>CVV:</label>
+          <input type="text" id="sourceCVV" maxlength="3" required />
+          <small id="sourceCVVError" class="error"></small>
+
+          <label>Withdrawal Amount:</label>
+          <input type="text" id="withdrawalAmount" required />
+          <small id="withdrawalAmountError" class="error"></small>
+
+          <button type="submit">Withdraw</button>
+        </form>
+        <small id="withdrawal-success" class="success"></small>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
