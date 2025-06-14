@@ -1,0 +1,57 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="settings-content">
+    <div class="settings-container">
+      <h1>Settings</h1>
+      <div class="settings-buttons">
+        <button id="changeEmailBtn" class="settings-btn">Change Email</button>
+        <button id="changePasswordBtn" class="settings-btn">Change Password</button>
+      </div>
+    </div>
+
+    <!-- Change Email Modal -->
+    <div id="changeEmailModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeEmailModal">&times;</span>
+        <h2>Change Email</h2>
+        <p>Current Email: <span id="currentEmailDisplay">N/A</span></p>
+        <label for="newEmailInput">New Email:</label>
+        <input type="email" id="newEmailInput" placeholder="Enter new email" autocomplete="email">
+        <button id="saveEmailBtn">Save Email</button>
+        <div id="emailModalNotification" class="modal-notification"></div>
+      </div>
+    </div>
+
+  <!-- Change Password Modal -->
+<div id="changePasswordModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closePasswordModal">&times;</span>
+    <h2>Change Password</h2>
+    <p>Current Password: <span id="currentPasswordDisplay">N/A</span></p>
+    <label for="settingsNewPasswordInput">New Password:</label>
+    <input
+      type="password"
+      id="settingsNewPasswordInput"
+      placeholder="Enter new password"
+      autocomplete="new-password"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
+    >
+    <button id="savePasswordBtn">Save Password</button>
+    <div id="passwordModalNotification" class="modal-notification"></div>
+  </div>
+</div>
+
+
+  <script src="settings.js"></script>
+</body>
+</html>

@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Section</title>
+  <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+  <!-- Main Account Section -->
+  <div class="dashboard-content">
+    <h1>Account Details</h1>
+    <!-- Personal Details Section -->
+    <section class="personal-details">
+      <h2>Personal Details</h2>
+      <div class="profile-info">
+        <!-- Removed Profile Picture block -->
+        <!-- Personal Information -->
+        <div class="personal-info">
+          <p><strong>Full Name:</strong> <span id="displayFullName"></span></p>
+          <p><strong>Phone Number:</strong> <span id="displayPhone"></span></p>
+          <p><strong>Mailing Address:</strong> <span id="displayAddress"></span></p>
+          <p><strong>Date of Birth:</strong> <span id="displayDOB"></span></p>
+          <p><strong>Account ID:</strong> <span id="displayAccountId"></span></p>
+          <button id="editProfileBtn">Edit Profile</button>
+        </div>
+      </div>
+    </section>
 
+    <!-- Account Overview Section -->
+    <section class="account-overview">
+      <h2>Account Overview</h2>
+      <div class="balance-summary">
+        <h3>Account Balances</h3>
+        <p><strong>Visa Card:</strong> <span id="visaBalance">$0</span></p>
+        <p><strong>Master Card:</strong> <span id="masterBalance">$0</span></p>
+      </div>
+
+      <div class="transaction-history">
+        <h3>Transaction History</h3>
+        <div class="transaction-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <!-- Removed Category header -->
+                <th>Amount</th>
+                <th>Card</th>
+              </tr>
+            </thead>
+            <tbody id="accountTransactionBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="account-statements">
+        <h3>Account Statements</h3>
+        <button id="downloadStatementBtn">Download Statement</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeEditModal">&times;</span>
+      <!-- Edit Profile Menu: List of Editable Fields -->
+      <div id="editProfileMenu" class="edit-profile-menu">
+        <h2>Edit Profile</h2>
+        <ul>
+          <li data-field="phone">Phone Number: <span id="menuPhone"></span></li>
+          <li data-field="address">Mailing Address: <span id="menuAddress"></span></li>
+          <li data-field="dob">Date of Birth: <span id="menuDOB"></span></li>
+        </ul>
+      </div>
+      <!-- Edit Field Container: The dynamic editing form will be injected here -->
+      <div id="editFieldContainer" class="edit-field-container" style="display: none;">
+        <div id="editFieldContent"></div>
+        <div class="button-row">
+          <button id="saveFieldBtn">Save</button>
+          <button id="backToMenuBtn">Back</button>
+        </div>
+        <div id="errorMessage" style="color: red; font-size: 14px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/account.js"></script>
+</body>
+</html>

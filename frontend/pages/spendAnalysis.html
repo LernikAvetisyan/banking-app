@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spend Analysis</title>
+  <link rel="stylesheet" href="css/spendAnalysis.css" />
+</head>
+<body>
+  <div class="dashboard-content">
+    <h1>Spend Analysis</h1>
+    
+    <!-- Filter Section -->
+    <div class="filter-section">
+      <select id="cardFilter" class="card-filter">
+        <option value="all">All Cards</option>
+      </select>
+      <input type="month" id="monthFilter" class="month-filter" value="" />
+    </div>
+
+    <!-- Single Chart Container for Spending Trends (with 2 lines) -->
+    <div class="charts-container">
+      <div class="chart-card">
+        <h2>Spending Trends</h2>
+        <canvas id="spendingTrendChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="transaction-history">
+      <h2>Transaction History</h2>
+      <div class="transaction-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Card</th>
+            </tr>
+          </thead>
+          <tbody id="transactionBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

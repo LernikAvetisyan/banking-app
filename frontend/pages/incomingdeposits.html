@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incoming Deposits</title>
+  <link rel="stylesheet" href="css/incomingdeposits.css">
+  <script defer src="js/incomingDeposits.js"></script>
+</head>
+<body>
+  <div class="incoming-deposits-container">
+    <h1>
+      Incoming Transactions
+      <span id="incomingBadge" class="badge"></span>
+    </h1>
+    <p class="instruction">
+      Below are your incoming requests. Click "Confirm" or "Reject" to process them.
+    </p>
+
+    <!-- TOP TABLE (4 columns) -->
+    <table id="depositsTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamically generated rows, each with 4 <td> cells -->
+      </tbody>
+    </table>
+    <!-- Inline notification for top table messages -->
+    <div id="depositNotification" class="notification"></div>
+
+    <!-- Incoming Transaction History Section -->
+    <div class="incoming-history-container">
+      <div class="history-header">
+        <h2>Incoming Transaction History</h2>
+        <select id="transactionFilterSelect">
+          <option value="all" selected>Select</option>
+          <option value="incoming">Incoming</option>
+          <option value="outgoing">Outgoing</option>
+        </select>
+      </div>
+      <!-- BOTTOM TABLE (3 columns, pinned header) -->
+      <table id="incomingHistoryTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamically generated rows, each with 3 <td> cells -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal Popup for Confirm/Reject actions -->
+  <div id="actionModal" class="modal">
+    <div class="modal-content">
+      <span id="modalCloseBtn" class="close" onclick="closeModal()">&times;</span>
+      <h3 id="modalInstruction">Select a card</h3>
+      <select id="modalCardSelect">
+        <!-- Dynamically populated in JS -->
+      </select>
+      <div id="modalNotification" class="modal-notification"></div>
+      <div class="modal-buttons">
+        <button id="modalConfirmBtn">Confirm</button>
+        <button id="modalCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

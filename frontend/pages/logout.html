@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("✅ Logging Out...");
+            sessionStorage.clear();  // ✅ Clears all session storage data
+            localStorage.clear();  // ✅ Clears all local storage data
+            window.location.replace("../index.html"); // ✅ Instantly redirects to login page
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

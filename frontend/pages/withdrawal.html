@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Withdrawal</title>
+  <link rel="stylesheet" href="css/withdrawal.css" />
+  <script defer src="js/withdrawal.js"></script>
+</head>
+<body>
+  <div class="withdrawal-content">
+    <h1>Withdrawal</h1>
+
+    <!-- 1️⃣ Selection Screen -->
+    <div id="withdrawal-selection">
+      <h2>Select how you would like to proceed with your transaction</h2>
+      <div class="withdrawal-options">
+        <div class="withdrawal-card" id="bankUsersWithdrawalOption">
+          <i class="fas fa-users"></i>
+          <h3>Bank Users</h3>
+          <p>Withdraw money to another user in our bank</p>
+        </div>
+        <div class="withdrawal-card" id="outOfBankUsersWithdrawalOption">
+          <i class="fas fa-credit-card"></i>
+          <h3>Out of Bank Users</h3>
+          <p>Withdraw money to an external card</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2️⃣ Bank Users Form (Hidden by Default) -->
+    <div id="bankUsersForm" class="hidden">
+      <!-- Back Button & Heading -->
+      <button class="back-btn" id="backFromBankUsersWithdrawal">Back</button>
+      <h2>Withdrawal to Bank User</h2>
+
+      <!-- Narrower box for bank users withdrawal -->
+      <div class="bank-users-box">
+        <form id="bankUserWithdrawalForm">
+          <label>User ID (Recipient's Account ID):</label>
+          <input type="text" id="recipientId" required />
+          <small id="recipientIdError" class="error"></small>
+
+          <label>Withdrawal Amount:</label>
+          <input type="text" id="bankUserWithdrawalAmount" required />
+          <small id="bankUserWithdrawalAmountError" class="error"></small>
+
+          <label>Choose Card to Withdraw From:</label>
+          <select id="senderCardSelect" required>
+            <option value="" disabled selected>Select a card</option>
+            <!-- Options will be populated dynamically -->
+          </select>
+          <small id="senderCardSelectError" class="error"></small>
+
+          <button type="submit">Withdraw</button>
+        </form>
+        <small id="bankUserWithdrawalSuccess" class="success"></small>
+      </div>
+    </div>
+
+    <!-- 3️⃣ Out of Bank Users Form (Hidden by Default) -->
+    <div id="outOfBankUsersForm" class="hidden">
+      <!-- Back Button & Heading -->
+      <button class="back-btn" id="backFromOutOfBankUsersWithdrawal">Back</button>
+      <h2>Withdrawal to External Card</h2>
+
+      <!-- Wallet Cards (Top) -->
+      <div id="withdrawal-wallet-list" class="wallet-list"></div>
+
+      <!-- "Choose a card..." dropdown -->
+      <div class="choose-card-text">
+        <p>Choose a card to withdraw from:</p>
+        <select id="withdrawalCardSelect"></select>
+      </div>
+
+      <!-- Hidden box for selected card details -->
+      <div id="outOfBankWithdrawalBox" class="out-of-bank-box hidden">
+        <div id="selected-withdrawal-card" class="selected-card"></div>
+
+        <!-- Out of Bank Users withdrawal form -->
+        <form id="withdrawalForm">
+          <label>Source Cardholder Name:</label>
+          <input type="text" id="sourceCardholderWithdrawal" required />
+          <small id="sourceCardholderWithdrawalError" class="error"></small>
+
+          <label>Source Card Number:</label>
+          <input type="text" id="sourceCardNumberWithdrawal" maxlength="19" required />
+          <small id="sourceCardNumberWithdrawalError" class="error"></small>
+
+          <label>Expiration Date (MM/YY):</label>
+          <div class="expiration-date">
+            <input type="text" id="sourceExpMonthWithdrawal" placeholder="MM" maxlength="2" required />
+            <small id="sourceExpMonthWithdrawalError" class="error"></small>
+            <input type="text" id="sourceExpYearWithdrawal" placeholder="YY" maxlength="2" required />
+            <small id="sourceExpYearWithdrawalError" class="error"></small>
+          </div>
+
+          <label>CVV:</label>
+          <input type="text" id="sourceCVVWithdrawal" maxlength="3" required />
+          <small id="sourceCVVWithdrawalError" class="error"></small>
+
+          <label>Withdrawal Amount:</label>
+          <input type="text" id="withdrawalAmount" required />
+          <small id="withdrawalAmountError" class="error"></small>
+
+          <button type="submit">Withdraw</button>
+        </form>
+        <small id="withdrawal-success" class="success"></small>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
