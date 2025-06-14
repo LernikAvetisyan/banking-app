@@ -1,0 +1,265 @@
+/* Basic resets */
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Main container offset from the sidebar and wider */
+.incoming-deposits-container {
+  margin-left: 350px;  /* Adjust to match your sidebar width */
+  padding: 2rem;
+  width: 1400px;       /* Slightly smaller overall screen width */
+  box-sizing: border-box;
+  background-color: #1e293b;
+  border-radius: 8px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.incoming-deposits-container h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.instruction {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+#depositsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0f172a;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+#depositsTable thead th {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+#depositsTable th,
+#depositsTable td {
+  padding: 10px;
+  border: 1px solid #334155;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Notification styling */
+.notification {
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #3b82f6;
+}
+
+/* Container for the bottom table (500px tall) */
+.incoming-history-container {
+  height: 600px;  /* Increased height to show more rows */
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+/* Header bar with filter dropdown */
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #334155;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.history-header h2 {
+  margin: 0;
+}
+
+#transactionFilterSelect {
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Bottom table with pinned header */
+#incomingHistoryTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #0f172a;
+  border-radius: 2px;
+  table-layout: fixed;
+}
+
+/* Pin the header row */
+#incomingHistoryTable thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+#incomingHistoryTable thead th {
+  background-color: #334155;
+  color: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* 3 columns => set widths as you like */
+#incomingHistoryTable thead th:nth-child(1) {
+  width: 20%;
+}
+#incomingHistoryTable thead th:nth-child(2) {
+  width: 60%;
+}
+#incomingHistoryTable thead th:nth-child(3) {
+  width: 20%;
+}
+
+/* Tbody with extra bottom space to see the last row */
+#incomingHistoryTable tbody {
+  display: block;
+  max-height: 420px;   /* 500px container - ~80px for pinned header & space */
+  overflow-y: auto;
+  width: 100%;
+  padding-bottom: 700px; /* Enough padding so last row is fully visible */
+}
+
+/* Each row in the tbody displayed as table */
+#incomingHistoryTable tbody tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Cells for the bottom table */
+#incomingHistoryTable th,
+#incomingHistoryTable td {
+  padding: 10px;
+  border: 1px solid #334155;
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Confirm/Reject Buttons (for top table usage) */
+.confirm-btn,
+.reject-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin: 0 2px;
+}
+.confirm-btn {
+  background-color: #10b981; /* Green */
+  color: #fff;
+}
+.reject-btn {
+  background-color: #ef4444; /* Red */
+  color: #fff;
+}
+
+/* Modal Popup Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+  background-color: #1e293b;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #334155;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 8px;
+  text-align: center;
+  color: #f8fafc;
+  position: relative;
+}
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.modal select {
+  width: 100%;
+  padding: 8px;
+  margin: 15px 0;
+  border-radius: 4px;
+  border: none;
+  background-color: #334155;
+  color: #f8fafc;
+}
+.modal-notification {
+  margin-top: 10px;
+  font-weight: bold;
+  display: none;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+.modal-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+#modalConfirmBtn {
+  background-color: #10b981;
+  color: #fff;
+}
+#modalCancelBtn {
+  background-color: #ef4444;
+  color: #fff;
+}
+
+/* Custom dark scrollbar for WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 4px;
+  border: 1px solid #1e293b;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #64748b;
+}

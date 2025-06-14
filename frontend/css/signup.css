@@ -1,0 +1,155 @@
+body {
+  background-color: #0f172a;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Signup Page Styles */
+.signup-container {
+  max-width: 400px;
+  max-height: 83vh;
+  margin: 2.0rem auto;
+  /* Notice the custom padding: top/bottom 4.5rem, left 4.5rem, right 6rem */
+  padding: 4.5rem 6rem 4.5rem 4.5rem;
+  background: linear-gradient(135deg, #2563eb 0%, #1e293b 100%);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.signup-container h2 {
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: rgb(46, 42, 42);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="date"] {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #6d00fc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.gender-options {
+  display: flex;
+  gap: 1.5rem;
+  color: black;
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: black;
+}
+
+.btn-signup {
+  width: 100%;
+  padding: 1rem;
+  background: #3a67af;
+  color: #1e293b;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.btn-signup:hover {
+  background: #054c99;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: rgb(255, 0, 0);
+}
+
+.login-link a {
+  font-weight: bold;
+  color: #02ff6b;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/*  SUCCESS SECTION STYLES */
+.signup-success {
+  display: flex;
+  flex-direction: column; /* Stack image + text vertically */
+  align-items: center;    /* Center them horizontally */
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0 auto;         /* Center the entire block */
+}
+
+/* Make the image bigger: fixed width and height. 
+   Use object-fit to avoid distortion. */
+.signup-success .success-image {
+  display: block;
+  width: 600px;           /* Same width for image and text block */
+  height: 300px;          /* Increase height for a taller image */
+  object-fit: cover;      /* Crop/cover the image without distortion */
+  margin: 0 auto 0;       /* Remove bottom margin to bring it closer to text */
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+
+/* The text block matches the image width and is placed just below it */
+.signup-success .success-message {
+  width: 550px;                 /* match the image width closely */
+  background-color: rgb(35, 63, 99); 
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem;              /* slightly larger padding for bigger box */
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 0.5rem;           /* small gap between image & text */
+}
+
+.signup-success .success-message p {
+  margin-bottom: 1rem;  
+  font-size: 1.25rem;           /* slightly larger font for more emphasis */
+}
+
+/* Center the "Log In" button, give it a bigger look */
+.btn-login {
+  display: block;
+  margin: 1rem auto 0;          /* space above the button, center horizontally */
+  background-color: #007bff;    /* your “orange” color or desired color */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;            /* slightly bigger text */
+  padding: 0.9rem 2rem;         /* bigger padding for a larger button */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #007bff;    /* same color or a bit darker if you like */
+}

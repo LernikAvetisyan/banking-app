@@ -1,0 +1,282 @@
+/* Overall Page Styling */
+body {
+  background: #0f172a; /* Modern dark blue */
+  color: #f8fafc;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.deposit-content {
+  margin-left: 350px; /* Adjusted for sidebar */
+  padding: 2rem;
+  max-width: 1400px;
+}
+
+/* Modern Deposit Selection Styling */
+.deposit-options {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.deposit-card {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  width: 300px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.deposit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(59, 130, 246, 0.3);
+}
+.deposit-card i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Back Button Styling */
+.back-btn {
+  background: #4f46e5; 
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.back-btn:hover {
+  background: #4338ca; 
+  transform: translateY(-2px);
+}
+
+/* Hide sections until user selects an option */
+.hidden {
+  display: none;
+}
+
+/* Wallet list container (cards) for Out of Bank Users */
+.wallet-list {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+  scrollbar-width: thin;
+}
+
+/* Individual wallet card */
+.wallet-card {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  min-width: 300px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+.wallet-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Dropdown Styling for "Choose a card..." (same as in withdrawal.css) */
+.choose-card-text p {
+  margin: 1rem 0 0.5rem;
+  font-size: 1rem;
+}
+.choose-card-text select {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #1e293b;
+  color: white;
+  border: 1px solid #334155;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IndoaXRlIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik03IDEwbDUgNSA1LTV6Ii8+PC9zdmc+');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+/* Selected Card Styling */
+.selected-card {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: 100%; /* fill the container */
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+}
+
+/* Error/Success Messages */
+/* Error/Success Messages */
+.error {
+  display: inline-block;   /* Keep inline so it appears next to the text */
+  margin-top: -1rem;       /* A slight upward nudge */
+  margin-left: 0.2rem;       /* Small space from the element preceding it */
+  margin-bottom: 0.25rem;    /* Space after the error text */
+  font-size: 0.875rem;
+  color: red;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.error::before {
+  content: "⚠ ";
+  margin-right: 0.25rem;     /* Space between the icon and text */
+}
+
+.success {
+  display: block;
+  padding: 0.75rem;
+  background: #059669;
+  color: white;
+  border-radius: 8px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+/* Bank Users: narrower box with red inputs (centered) */
+.bank-users-box {
+  width: 400px;
+  max-width: 90%;
+  margin: 2rem auto;
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+.bank-users-box label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  color: #94a3b8;
+}
+.bank-users-box input {
+  display: block;
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  background: rgb(13, 4, 39); /* "red" shade */
+  color: white;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+.bank-users-box button {
+  display: block;
+  margin: 1rem auto 0;
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  padding: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.bank-users-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* 
+   Additional styling for the "Choose Card to Deposit Into" label and dropdown 
+   inside the .bank-users-box 
+*/
+.bank-users-box label.choose-card-label {
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #f8fafc; /* off-white text */
+}
+.bank-users-box select#recipientCardSelect {
+  background-color: #0f172a;  /* dark background */
+  color: #f8fafc;            /* light text */
+  border: 1px solid #334155; /* subtle border */
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  margin-bottom: 1rem;       /* some spacing below */
+}
+.bank-users-box select#recipientCardSelect:hover {
+  background-color: #1e293b; /* slightly lighter on hover */
+}
+.bank-users-box select#recipientCardSelect:focus {
+  outline: 2px solid #3b82f6; /* highlight on focus */
+  outline-offset: 2px;
+}
+
+/* Out of Bank Users: left-aligned box with red inputs */
+.out-of-bank-box {
+  width: 400px;         /* fixed width, no auto margin so it's left-aligned */
+  max-width: 90%;
+  margin: 2rem 0;       /* top/bottom spacing only, left is 0 by default */
+  background: #1e293b;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+.out-of-bank-box label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+.out-of-bank-box input {
+  display: block;
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  background: rgb(13, 4, 39); /* "red" shade */
+  color: white;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+.out-of-bank-box button {
+  display: block;
+  margin: 1rem 0 0;  /* no auto, so it stays left-aligned */
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+  padding: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.out-of-bank-box button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Expiration Date Grid */
+.expiration-date {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .deposit-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
+  .wallet-list {
+    flex-direction: column;
+  }
+  
+  .selected-card {
+    width: 100%;
+  }
+}
