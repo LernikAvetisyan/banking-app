@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banking Website</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="css/global.css" />
+  <!-- Load login, badge, forgotPassword and deposit initialization scripts -->
+  <script defer src="js/login.js"></script>
+  <script defer src="js/incomingDepositsBadge.js"></script>
+  <!-- Removed the extra references to incomingDeposits.js here -->
+  <script defer src="js/forgotPassword.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Login Page (displayed if no token exists) -->
+  <div id="login-page">
+    <div class="container">
+      <div class="left-section">
+        <h1 class="animated-title">
+          FINANCIAL FLEXIBILITY TO <br />
+          EXPLORE WHAT'S POSSIBLE
+        </h1>
+        <p class="highlight">Get Paid Up to Two Days Early</p>
+        <button class="learn-more" onclick="redirectToLearnMore()">LEARN MORE</button>
+      </div>
+      <div class="right-section">
+        <!-- ORIGINAL LOGIN BOX -->
+        <div class="login-box" id="loginBox">
+          <h2>Online Banking Login</h2>
+          <form id="loginForm">
+            <input type="text" id="email" placeholder="Username" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <!-- Dropdown for selecting login type -->
+            <div class="form-group">
+              <label for="loginRole">Login as:</label>
+              <select id="loginRole" name="loginRole">
+                <option value="user">User</option>
+                <option value="employee">Employee</option>
+                <option value="admin">Admin</option>
+              </select>
+            </div>
+            <div class="links">
+              <!-- Attach an ID to "Forgot Password?" so we can toggle the view -->
+              <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+              <a href="#" id="signup-link" onclick="redirectToSignUp()">Sign Up</a>
+            </div>
+            <button type="submit" class="btn login-btn">Log In</button>
+          </form>
+          <!-- Error message container -->
+          <div id="loginError" style="color: red; font-size: 14px;"></div>
+        </div>
+        
+        <!-- FORGOT PASSWORD BOX (initially hidden) -->
+<div class="login-box" id="forgotPasswordBox" style="display: none;">
+  <h2>Forgot Password</h2>
+
+  <!-- Step 1: Ask user for their email -->
+  <div id="forgotPasswordStep1">
+    <p>Enter your email address:</p>
+    <input type="email" id="forgotPasswordEmail" placeholder="Email" required />
+    <button id="sendVerificationCodeBtn" class="forgot-btn">Send Verification Code</button>
+    <button id="backToLoginBtn" class="forgot-btn">Back to login</button>
+  </div>
+
+  <!-- Step 2: Verification code input (initially hidden) -->
+  <div id="forgotPasswordStep2" style="display: none;">
+    <p>We have sent a verification code to your email. Please enter it below:</p>
+    <input type="text" id="verificationCodeInput" placeholder="Verification code" required />
+    <button id="verifyCodeBtn" class="forgot-btn">Verify Code</button>
+    <button id="backToLoginBtn2" class="forgot-btn">Back to login</button>
+  </div>
+
+  <!-- Step 3: Reset password input (initially hidden) -->
+  <div id="forgotPasswordStep3" style="display: none;">
+    <p>Verification successful! Enter your new password below:</p>
+    <input type="password" id="newPasswordInput" placeholder="New password" required />
+    <input type="password" id="confirmNewPasswordInput" placeholder="Confirm new password" required />
+    <button id="resetPasswordBtn" class="forgot-btn">Reset Password</button>
+    <button id="backToLoginBtn3" class="forgot-btn">Back to login</button>
+  </div>
+
+  <!-- Notification area for errors or success messages -->
+  <div id="forgotPasswordError" style="color: red; margin-top: 10px;"></div>
+  <div id="forgotPasswordSuccess" style="color: green; margin-top: 10px;"></div>
+</div>
+      </div>
+    </div>
+  </div>
+  <!-- END OF LOGIN PAGE -->
+
+  <!-- Main Container (displayed after successful login) -->
+  <div id="main-container" style="display: none;">
+    <aside class="sidebar">
+      <div class="user-info">
+        <p>Welcome back,</p>
+        <p class="user-email"><strong id="user-email"></strong></p>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="javascript:void(0)" onclick="loadSection('dashboard')">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#">
+            <i class="fas fa-exchange-alt"></i> Transactions
+          </a>
+          <ul class="sub-menu">
+            <li><a href="javascript:void(0)" onclick="loadSection('deposit')">Deposit</a></li>
+            <li><a href="javascript:void(0)" onclick="loadSection('withdrawal')">Withdrawal</a></li>
+            <li><a href="javascript:void(0)" onclick="loadSection('spendAnalysis')">Spend Analysis</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:void(0)" onclick="loadSection('wallet')">
+            <i class="fas fa-wallet"></i> Wallet
+          </a>
+        </li>
+        <!-- New Incoming Deposits section with badge -->
+        <li>
+          <a id="incomingDepositsIcon" href="javascript:void(0)" onclick="loadSection('incomingdeposits')">
+            <i class="fas fa-inbox"></i> Incoming Deposits <span id="incomingBadge" class="badge"></span>
+          </a>
+        </li>        
+        <li>
+          <a href="javascript:void(0)" onclick="loadSection('settings')">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+        </li>
+      </ul>
+      <ul class="bottom-nav">
+        <li>
+          <a href="javascript:void(0)" onclick="loadSection('account')">
+            <i class="fas fa-user"></i> Account
+          </a>
+        </li>
+        <li>
+          <a href="pages/logout.html">
+            <i class="fas fa-sign-out-alt"></i> Log Out
+          </a>
+        </li>
+      </ul>
+    </aside>
+    <main id="main-content">
+      <p style="text-align: center; margin-top: 50px; font-size: 20px; color: white;">
+        Select a section from the sidebar.
+      </p>
+    </main>
+  </div>
+  <!-- END OF MAIN CONTAINER -->
+
+  <script>
+    // Global variable to track the current section.
+    let currentSection = "";
+
+    // loadSection: Dynamically loads section HTML and its CSS.
+    function loadSection(section) {
+      if (currentSection === section) {
+        console.log("Section already loaded:", section);
+        return;
+      }
+      currentSection = section;
+      // Use sessionStorage (not localStorage) to store lastSection
+      sessionStorage.setItem("lastSection", section);
+      fetch(`pages/${section}.html`)
+        .then(function(response) {
+          return response.text();
+        })
+        .then(function(data) {
+          // If data is a full HTML document, extract the <body> content.
+          const bodyMatch = data.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+          if (bodyMatch && bodyMatch[1]) {
+            data = bodyMatch[1];
+          }
+          document.getElementById("main-content").innerHTML = data;
+
+          // Remove previously loaded dynamic CSS links.
+          document.querySelectorAll("link[rel='stylesheet'][data-dynamic]").forEach(link => link.remove());
+
+          // Create a new <link> for this section's CSS
+          let link = document.createElement("link");
+          link.rel = "stylesheet";
+          if (section === "wallet") {
+            link.href = "css/wallet.css";
+          } else if (section === "account") {
+            link.href = "css/account.css";
+          } else if (section === "admin") {
+            link.href = "css/admin.css";
+          } else if (section === "employees") {
+            link.href = "css/employees.css";
+          } else if (section === "deposit") {
+            link.href = "css/deposit.css";
+          } else if (section === "withdrawal") {
+            link.href = "css/withdrawal.css";
+          } else if (section === "incomingdeposits") {
+            link.href = "css/incomingdeposits.css";
+          } else if (section === "dashboard") {
+            link.href = "css/dashboard.css";
+          } else if (section === "spendAnalysis") {
+            link.href = "css/spendAnalysis.css";
+          } else if (section === "settings") {
+            link.href = "css/settings.css";
+          } else {
+            link.href = `css/${section}.css`;
+          }
+          link.setAttribute("data-dynamic", "true");
+          document.head.appendChild(link);
+
+          // Reinitialize dynamic functionality for sections.
+          if (section === "wallet") {
+            if (typeof window.initWallet === "function") {
+              console.log("Calling initWallet()");
+              window.initWallet();
+            } else {
+              console.log("initWallet() is not defined");
+              let script = document.createElement("script");
+              script.src = "js/wallet.js";
+              script.onload = function() {
+                if (typeof window.initWallet === "function") {
+                  console.log("initWallet() defined after loading wallet.js");
+                  window.initWallet();
+                } else {
+                  console.error("initWallet still not available");
+                }
+              };
+              document.body.appendChild(script);
+            }
+          }
+          if (section === "account") {
+            if (typeof window.initAccountEdit !== "function") {
+              let script = document.createElement("script");
+              script.src = "js/account.js";
+              script.defer = true;
+              script.onload = function() {
+                if (typeof window.initAccountEdit === "function") {
+                  console.log("Calling initAccountEdit() after loading account.js");
+                  window.initAccountEdit();
+                } else {
+                  console.error("initAccountEdit still not available");
+                }
+              };
+              document.body.appendChild(script);
+            } else {
+              console.log("Calling initAccountEdit()");
+              window.initAccountEdit();
+            }
+          }
+          if (section === "deposit") {
+            if (typeof window.initDeposit === "function") {
+              console.log("Calling initDeposit()");
+              window.initDeposit();
+            } else {
+              let script = document.createElement("script");
+              script.src = "js/deposit.js";
+              script.defer = true;
+              script.onload = function() {
+                if (typeof window.initDeposit === "function") {
+                  console.log("initDeposit() defined after loading deposit.js");
+                  window.initDeposit();
+                } else {
+                  console.error("initDeposit still not available");
+                }
+              };
+              document.body.appendChild(script);
+            }
+          }
+          if (section === "withdrawal") {
+            if (typeof window.initWithdrawal === "function") {
+              console.log("Calling initWithdrawal()");
+              window.initWithdrawal();
+            } else {
+              let script = document.createElement("script");
+              script.src = "js/withdrawal.js";
+              script.defer = true;
+              script.onload = function() {
+                if (typeof window.initWithdrawal === "function") {
+                  console.log("initWithdrawal() defined after loading withdrawal.js");
+                  window.initWithdrawal();
+                } else {
+                  console.error("initWithdrawal still not available");
+                }
+              };
+              document.body.appendChild(script);
+            }
+          }
+          if (section === "dashboard") {
+            let balanceScript = document.createElement("script");
+            balanceScript.src = "js/balance.js";
+            balanceScript.defer = true;
+            balanceScript.onload = function() {
+              if (typeof window.initDashboard === "function") {
+                console.log("Calling initDashboard() after balance.js is loaded");
+                window.initDashboard();
+              } else {
+                let script = document.createElement("script");
+                script.src = "js/dashboard.js";
+                script.defer = true;
+                script.onload = function() {
+                  if (typeof window.initDashboard === "function") {
+                    console.log("initDashboard() defined after loading dashboard.js");
+                    window.initDashboard();
+                  } else {
+                    console.error("initDashboard still not available");
+                  }
+                };
+                document.body.appendChild(script);
+              }
+            };
+            document.body.appendChild(balanceScript);
+          }
+          if (section === "spendAnalysis") {
+            if (typeof window.initSpendAnalysis === "function") {
+              console.log("Calling initSpendAnalysis()");
+              window.initSpendAnalysis();
+            } else {
+              let script = document.createElement("script");
+              script.src = "js/spendAnalysis.js";
+              script.defer = true;
+              script.onload = function() {
+                if (typeof window.initSpendAnalysis === "function") {
+                  console.log("initSpendAnalysis defined after loading spendAnalysis.js");
+                  window.initSpendAnalysis();
+                } else {
+                  console.error("initSpendAnalysis still not available");
+                }
+              };
+              document.body.appendChild(script);
+            }
+          }
+          if (section === "incomingdeposits") {
+            // The code below will dynamically load incomingDeposits.js if not present
+            // If you removed the <script> reference from <head>, this ensures we have it
+            if (typeof window.initIncomingDeposits === "function") {
+              console.log("Calling initIncomingDeposits()");
+              window.initIncomingDeposits();
+            } else {
+              let script = document.createElement("script");
+              script.src = "js/incomingDeposits.js";
+              script.defer = true;
+              script.onload = function() {
+                if (typeof window.initIncomingDeposits === "function") {
+                  console.log("initIncomingDeposits() defined after loading incomingDeposits.js");
+                  window.initIncomingDeposits();
+                } else {
+                  console.error("initIncomingDeposits still not available");
+                }
+              };
+              document.body.appendChild(script);
+            }
+          }
+          if (section === "settings") {
+            if (typeof window.initSettings === "function") {
+              console.log("Calling initSettings()");
+              window.initSettings();
+            } else {
+              let script = document.createElement("script");
+              script.src = "js/settings.js";
+              script.defer = true;
+              script.onload = function() {
+                if (typeof window.initSettings === "function") {
+                  console.log("initSettings() defined after loading settings.js");
+                  window.initSettings();
+                } else {
+                  console.error("initSettings still not available");
+                }
+              };
+              document.body.appendChild(script);
+            }
+          }
+        })
+        .catch(function(error) {
+          console.error("Error loading section:", error);
+        });
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+    const token = sessionStorage.getItem("authToken");
+    if (token) {
+      // Show the main container and hide the login page
+      document.getElementById("main-container").style.display = "flex";
+      document.getElementById("login-page").style.display = "none";
+      
+      // Get the user object from sessionStorage.
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      // Set the global currentUser so that incomingDepositsBadge.js can access it.
+      window.currentUser = user;
+      
+      let lastSection = sessionStorage.getItem("lastSection") || "dashboard";
+      
+      if (user && user.role) {
+        if (user.role === "admin") {
+          loadSection("admin");
+        } else if (user.role === "employee") {
+          loadSection("employees");
+        } else {
+          loadSection(lastSection);
+        }
+      } else {
+        loadSection(lastSection);
+      }
+      
+      // Set the user's email in the sidebar.
+      if (user && user.email) {
+        document.getElementById("user-email").textContent = user.email;
+      } else if (user && user.accountId) {
+        // Fallback: fetch profile from the backend
+        fetch(`/api/user/profile?accountId=${user.accountId}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data && data.email) {
+              document.getElementById("user-email").textContent = data.email;
+            }
+          })
+          .catch(error => console.error("Error fetching user email:", error));
+      }
+      
+      // Give some time for scripts to load, then update the badge.
+      setTimeout(() => {
+        if (typeof window.updateIncomingBadgeCount === 'function') {
+          window.updateIncomingBadgeCount();
+        }
+      }, 200);
+    }
+  });
+
+    
+function goBack() {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+  if (user && user.role) {
+    if (user.role === "admin") {
+      loadSection("admin");
+    } else if (user.role === "employee") {
+      loadSection("employees");
+    } else {
+      loadSection("account");
+    }
+  } else {
+    loadSection("account");
+  }
+}
+
+    
+    function redirectToLearnMore() {
+      window.location.href = "pages/learn-more.html";
+    }
+    function redirectToSignUp() {
+      window.location.href = "pages/signup.html";
+    }
+    
+    // NEW: Toggle forgot password view instead of redirecting
+    document.addEventListener("DOMContentLoaded", () => {
+      const forgotPasswordLink = document.getElementById("forgotPasswordLink");
+      if (forgotPasswordLink) {
+        forgotPasswordLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          // Hide login box and show forgot password box
+          document.getElementById("loginBox").style.display = "none";
+          document.getElementById("forgotPasswordBox").style.display = "block";
+          // Initialize forgot password functionality if defined
+          if (typeof window.initForgotPassword === "function") {
+            window.initForgotPassword();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
